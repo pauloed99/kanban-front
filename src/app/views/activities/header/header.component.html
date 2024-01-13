@@ -1,0 +1,36 @@
+<div class="bg-primary">
+  <div class="row px-2">
+    <div class="col-2 py-2 position-relative pe-0">
+      <input
+        type="text"
+        class="form-control pe-5"
+        placeholder="Localizar Atividade"
+        [matAutocomplete]="auto"
+        (input)="handleActivityChange($event)"
+      />
+      <mat-autocomplete
+        #auto="matAutocomplete"
+        [displayWith]="displayFn"
+      >
+        @for (option of options; track option) {
+        <app-update-delete-activity-modal
+          [activity]="option"
+          [activityGroupId]="option.group.id"
+        >
+          <mat-option [value]="option">{{ option.title }}</mat-option>
+        </app-update-delete-activity-modal>
+        }
+      </mat-autocomplete>
+      <i
+        class="bi bi-search position-absolute translate-middle top-50 end-0"
+      ></i>
+    </div>
+    <i
+      cursorPointer
+      class="bi bi-bell-fill col-auto ms-auto my-auto"
+      popoverClass="mt-5 bg-danger"
+      placement="left"
+      ngbPopover="Activities late: {{ numberOfActivitiesLate() }}"
+    ></i>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">
+      Update or delete activity
+    </h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss()"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="activityForm">
+      <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input class="form-control" formControlName="title" />
+        @if(title.invalid && (title.dirty || title.touched)) {
+        <div class="alert alert-danger mt-1">Title is required!</div>
+        }
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Deadline</label>
+        <input type="date" class="form-control" formControlName="deadline" />
+        @if(deadline.invalid && (deadline.dirty || deadline.touched)) {
+        <div class="alert alert-danger mt-1">Deadline is required!</div>
+        }
+      </div>
+      <div>
+        <label>Done?</label>
+        <br />
+        <input class="col-auto" type="checkbox" formControlName="status" />
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="deleteActivity()"
+    >
+      Delete
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="updateActivity()"
+    >
+      Update
+    </button>
+  </div>
+</ng-template>
+
+<div cursorPointer (click)="open(content)">
+  <ng-content></ng-content>
+</div>

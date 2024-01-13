@@ -1,0 +1,15 @@
+<div class="row mt-5 ms-5">
+  @for (activityGroup of activitiesGroups; track activityGroup) {
+  <app-activity-group
+    class="col-3 me-5"
+    [activitiesGroupsIds]="activitiesGroupsIds"
+    [activityGroup]="activityGroup"
+    (newActivityGroupEvent)="getNewActivityGroup($event)"
+  ></app-activity-group>
+  }
+  <app-new-group-modal
+    cursorPointer
+    class="col-2 h-100 text-primary border border-black new-group p-2 fs-5"
+    (newActivityGroupEvent)="getNewActivityGroup($event)"
+  ></app-new-group-modal>
+</div>

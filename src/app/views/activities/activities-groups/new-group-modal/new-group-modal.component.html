@@ -1,0 +1,51 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add new group</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss()"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="activityGroupForm">
+      <div class="mb-3">
+        <label class="form-label">Title</label>
+        <input class="form-control" formControlName="title" />
+        @if(title.invalid && (title.dirty || title.touched)) {
+        <div class="alert alert-danger mt-1">Title is required!</div>
+        }
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Work In Progress</label>
+        <input
+          type="number"
+          class="form-control"
+          formControlName="workInProgress"
+        />
+        @if(workInProgress.invalid && (workInProgress.dirty ||
+        workInProgress.touched)) {
+        <div class="alert alert-danger mt-1">
+          @if(workInProgress.errors?.['required']) {
+          <div>Wip is required!</div>
+          } @if(workInProgress.errors?.['min']) {
+          <div>Name must be greater than 0!</div>
+          }
+        </div>
+        }
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="saveActivityGroup()"
+    >
+      Save
+    </button>
+  </div>
+</ng-template>
+
+<div (click)="open(content)">Novo Grupo +</div>

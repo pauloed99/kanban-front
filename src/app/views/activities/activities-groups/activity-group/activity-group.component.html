@@ -1,0 +1,80 @@
+<div class="row border border-black">
+  <div class="col-12 bg-primary border-bottom border-black">
+    <div class="row p-2">
+      <p class="col-auto text-white fs-4 m-0">{{ activityGroup.title }}</p>
+      <app-edit-group-modal
+        [activityGroup]="activityGroup"
+        cursorPointer
+        class="col-auto ms-auto me-3 my-auto"
+        (newActivityGroupEvent)="getNewActivityGroup($event)"
+      ></app-edit-group-modal>
+      <app-delete-group-modal
+        [groupId]="activityGroup.id"
+        cursorPointer
+        class="col-auto my-auto"
+        (newActivityGroupEvent)="getNewActivityGroup($event)"
+        (newActivityEvent)="getNewActivity($event)"
+      ></app-delete-group-modal>
+      <p class="col-12 text-white fs-4 m-0">
+        Wip: {{ activityGroup.workInProgress }}
+      </p>
+    </div>
+  </div>
+  <main>
+    <div
+      class="col-12 pt-3"
+      cdkDropList
+      id="{{ activityGroup.id }}"
+      [cdkDropListData]="activities"
+      (cdkDropListDropped)="drop($event)"
+      [cdkDropListConnectedTo]="activitiesGroupsIds"
+    >
+      <div class="row">
+        @for (activity of activities; track activity) {
+        <app-update-delete-activity-modal
+          cdkDrag
+          [activity]="activity"
+          [activityGroupId]="activityGroup.id"
+          (newActivityEvent)="getNewActivity($event)"
+          class="mx-auto mb-3 border border-black bg-white p-3 col-10"
+        >
+          <div class="row ps-2">
+            <p class="m-0 p-0 col-12">{{ activity.title }}</p>
+            <div class="col-auto">
+              <div
+                class="row rounded-4 px-3"
+                [class.bg-danger]="activity.status == 'late'"
+                [class.bg-success]="activity.status == 'done'"
+              >
+                <input
+                  class="col-auto"
+                  type="checkbox"
+                  disabled
+                  *ngIf="activity.status != 'done'"
+                />
+                <input
+                  class="col-auto"
+                  type="checkbox"
+                  disabled
+                  checked
+                  *ngIf="activity.status == 'done'"
+                />
+                <i class="bi bi-clock-fill col-auto py-center"></i>
+                <p class="col-auto m-0 p-0">
+                  {{ activity.deadline | date : "dd/MM/yyyy" }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </app-update-delete-activity-modal>
+        }
+      </div>
+    </div>
+    <app-new-activity-modal
+      cursorPointer
+      class="text-primary fs-5 col-4"
+      [groupId]="activityGroup.id"
+      (newActivityEvent)="getNewActivity($event)"
+    ></app-new-activity-modal>
+  </main>
+</div>
