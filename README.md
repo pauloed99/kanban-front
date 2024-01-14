@@ -1,4 +1,4 @@
-# Angular Crud-API
+# Angular Kanban
 
 # Sobre o projeto
 
@@ -8,7 +8,7 @@ Link do repositório, no qual foi feita a API com Spring Boot: https://github.co
 
 ## Layout web
 
-
+https://github.com/pauloed99/kanban-front/assets/39839220/efdf5a59-47a6-49e1-9cbd-1eea9237a4e9
 
 # Tecnologias utilizadas
 ## Front end
