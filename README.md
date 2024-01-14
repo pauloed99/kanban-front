@@ -1,27 +1,39 @@
-# KanbanFront
+# Angular Crud-API
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.7.
+# Sobre o projeto
 
-## Development server
+Aplicação Web feita com o Framework Angular junto à biblioteca Angular Material e ao Framework Bootstrap com o intuito de demonstrar uma simulação do quadro kanban.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Link do repositório, no qual foi feita a API com Spring Boot: https://github.com/pauloed99/kanban-back
 
-## Code scaffolding
+## Layout web
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+# Tecnologias utilizadas
+## Front end
+- HTML / CSS / JavaScript / TypeScript
+- Angular 17
+- Bootstrap 5
+- Angular Material
 
-## Running unit tests
+# Como executar o projeto
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Pré-requisitos: npm 
 
-## Running end-to-end tests
+```bash
+# clonar repositório
+git clone https://github.com/pauloed99/kanban-front
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+# instalar dependências
+npm install
 
-## Further help
+# executar o projeto
+npm start
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+# Autor
+
+Paulo Eduardo Dutra
+
+https://www.linkedin.com/in/paulo-eduardo-dutra/
